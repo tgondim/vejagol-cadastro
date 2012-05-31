@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Mon Apr 16 16:21:27 GMT-03:00 2012
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=VejaGolCadastro.jar
+manifest.mergeall=true
+manifest.mainclass=
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

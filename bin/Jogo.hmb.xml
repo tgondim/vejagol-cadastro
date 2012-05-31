@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.vejagol.model.Jogo" table="jogo" lazy="true">
+		<id name="id" column="ID" unsaved-value="0">
+			<generator class="increment">
+				<param name="sequence">GEN_JOGO_ID</param>
+			</generator>
+		</id>
+		<property name="data" column="DATA" update="true" />
+<!-- 		<timestamp name="data" column="DATA" source="db"/> -->
+		<property name="timeCasa" column="TIME_CASA" update="true"/>
+		<property name="timeVisitante" column="TIME_VISITANTE" update="true"/>
+		<property name="placarCasa" column="PLACAR_CASA" update="true"/>
+		<property name="placarVisitante" column="PLACAR_VISITANTE" update="true"/>
+		<property name="campeonato" column="CAMPEONATO" update="true"/>
+		<property name="liga" column="LIGA" update="true"/>
+		<property name="link" column="LINK" update="true"/>
+	</class>
+	
+</hibernate-mapping>  

@@ -18,6 +18,8 @@ public interface RepositorioJogo {
 
 	public List<Jogo> listar(int de, int ate, String ordem, String filtros, boolean ascending);
 	
+	public List<Jogo> buscar(int de, int ate, String chave, String ordem, boolean ascending);
+	
 	public void remover(Jogo jogo);
 
 

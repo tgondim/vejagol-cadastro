@@ -34,4 +34,8 @@ public class CadastroJogo {
 	public ArrayList<Jogo> listarJogos(int de, int ate, String ordem, String filtros, boolean ascending) {
 		return (ArrayList<Jogo>)repositorioJogo.listar(de, ate, ordem, filtros, ascending);
 	}
+
+	public ArrayList<Jogo> buscarJogos(int de, int ate, String ordem, String chaves, boolean ascending) {
+		return (ArrayList<Jogo>)repositorioJogo.buscar(de, ate, ordem, chaves, ascending);
+	}
 }

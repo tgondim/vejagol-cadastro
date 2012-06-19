@@ -113,5 +113,46 @@ public class RepositorioJogoDAO implements RepositorioJogo {
 		session.getTransaction().commit();
 //		session.close();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Jogo> buscar(int de, int ate, String ordem, String chaves, boolean ascending) {
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Criteria c = session.createCriteria(Jogo.class);
+		Disjunction ou = Restrictions.disjunction();
+
+		boolean temChave = false;
+		String chaveToken;
+		StringTokenizer tokenizer = new StringTokenizer(chaves, " ");
+		while (tokenizer.hasMoreTokens()) {
+			chaveToken = tokenizer.nextToken().trim();
+			//ou.add(Restrictions.ilike("data", chaveToken));
+			ou.add(Restrictions.like("timeCasa", "%" + chaveToken + "%"));
+			ou.add(Restrictions.like("timeVisitante", "%" + chaveToken + "%"));
+			ou.add(Restrictions.like("campeonato", "%" + chaveToken + "%"));
+			ou.add(Restrictions.like("liga", "%" + chaveToken + "%"));
+			temChave = true;
+		}	
+		if (temChave) {
+			c.add(ou);
+		}
+
+		tokenizer = new StringTokenizer(ordem, ";");
+		while (tokenizer.hasMoreTokens()) {
+			if (ascending) {
+				c.addOrder(Order.asc(tokenizer.nextToken().trim()));
+			} else {
+				c.addOrder(Order.desc(tokenizer.nextToken().trim()));
+			}
+		}
+		List<Jogo> listaJogo = c.list();
+		session.close();
+		if (ate <= listaJogo.size()) {
+			return new ArrayList<Jogo>(listaJogo.subList(de, ate));
+		} else {
+			return new ArrayList<Jogo>(listaJogo.subList(de, listaJogo.size()));
+		}
+	}
 
 }

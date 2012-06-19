@@ -56,6 +56,8 @@ public class StringUtils {
 		htmlEntities.put("&Ucirc;", "Û");
 		htmlEntities.put("&uuml;", "ü");
 		htmlEntities.put("&Uuml;", "Ü");
+		htmlEntities.put("&ntilde;", "ñ");
+		htmlEntities.put("&Ntilde;", "Ñ");
 		htmlEntities.put("&nbsp;", " ");
 		htmlEntities.put("&copy;", "\u00a9");
 		htmlEntities.put("&oacute;", "ó");
@@ -220,6 +222,12 @@ public class StringUtils {
 			case 'Ü':
 				sb.append("&Uuml;");
 				break;
+			case 'ñ':
+				sb.append("&ntilde;");
+				break;
+			case 'Ñ':
+				sb.append("&Ntilde;");
+				break;
 			case '®':
 				sb.append("&reg;");
 				break;
@@ -230,9 +238,9 @@ public class StringUtils {
 				sb.append("&euro;");
 				break;
 			// be carefull with this one (non-breaking whitee space)
-			case ' ':
-				sb.append("&nbsp;");
-				break;
+			//case ' ':
+				//sb.append("&nbsp;");
+				//break;
 
 			default:
 				sb.append(c);

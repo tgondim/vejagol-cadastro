@@ -27,7 +27,7 @@ public class RepositorioJogoDAO implements RepositorioJogo {
 		session.clear();
 		session.merge(jogo);
 		session.getTransaction().commit();
-//		session.close(); 
+		session.close(); 
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class RepositorioJogoDAO implements RepositorioJogo {
 		session.beginTransaction();
 		Jogo jogo = (Jogo)session.load(Jogo.class, idJogo);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 		return jogo;	
 	}
 	
@@ -51,7 +51,7 @@ public class RepositorioJogoDAO implements RepositorioJogo {
 		c.add(Restrictions.eq("timeCasa", timeCasa));
 		c.add(Restrictions.eq("timeVisitante", timeVisitante));
 		ArrayList<Jogo> listaJogos = (ArrayList<Jogo>)c.list();
-//		session.close();
+		session.close();
 		if (listaJogos.size() > 0) { 
 			return listaJogos.get(0);
 		}
@@ -66,7 +66,7 @@ public class RepositorioJogoDAO implements RepositorioJogo {
 		session.clear();
 		session.save(jogo);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -111,7 +111,7 @@ public class RepositorioJogoDAO implements RepositorioJogo {
 		Jogo jogoRemover = (Jogo)session.load(Jogo.class, jogo.getId());
 		session.delete(jogoRemover);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	}
 	
 	@SuppressWarnings("unchecked")

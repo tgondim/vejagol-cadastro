@@ -25,7 +25,7 @@ public class RepositorioMelhorDaSemanaDAO implements RepositorioMelhorDaSemana {
 		session.clear();
 		session.merge(melhorDaSemana);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class RepositorioMelhorDaSemanaDAO implements RepositorioMelhorDaSemana {
 		session.beginTransaction();
 		MelhorDaSemana melhorDaSemana = (MelhorDaSemana)session.load(MelhorDaSemana.class, idMelhorDaSemana);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 		return melhorDaSemana;	
 	}
 	
@@ -49,7 +49,7 @@ public class RepositorioMelhorDaSemanaDAO implements RepositorioMelhorDaSemana {
 		c.add(Restrictions.eq("semana", semana));
 		c.add(Restrictions.eq("ano", ano));
 		ArrayList<MelhorDaSemana> listaMelhorDaSemana = (ArrayList<MelhorDaSemana>)c.list();
-//		session.close();
+		session.close();
 		if (listaMelhorDaSemana.size() > 0) { 
 			return listaMelhorDaSemana.get(0);
 		}
@@ -64,7 +64,7 @@ public class RepositorioMelhorDaSemanaDAO implements RepositorioMelhorDaSemana {
 		session.clear();
 		session.save(melhorDaSemana);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -109,7 +109,7 @@ public class RepositorioMelhorDaSemanaDAO implements RepositorioMelhorDaSemana {
 		MelhorDaSemana melhorDaSemanaRemover = (MelhorDaSemana)session.load(MelhorDaSemana.class, melhorDaSemana.getId());
 		session.delete(melhorDaSemanaRemover);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	}
 
 }
